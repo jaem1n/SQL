@@ -1,0 +1,8 @@
+SELECT CEIL(AVG(Salary) - AVG(REPLACE(Salary, '0', '')))
+FROM EMPLOYEES
+;
+
+-- CAST
+SELECT CEIL(AVG(Salary) - AVG(REPLACE(CAST(Salary AS FLOAT), '0', '')))
+FROM EMPLOYEES
+;

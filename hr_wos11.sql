@@ -1,0 +1,34 @@
+-- NOT LIKE
+SELECT DISTINCT CITY
+FROM STATION
+WHERE (CITY NOT LIKE 'A%' 
+       AND CITY NOT LIKE 'E%'
+       AND CITY NOT LIKE 'I%'
+       AND CITY NOT LIKE 'O%'
+       AND CITY NOT LIKE 'U%')
+    OR (CITY NOT LIKE '%A' 
+        AND CITY NOT LIKE '%E'
+        AND CITY NOT LIKE '%I'
+        AND CITY NOT LIKE '%O'
+        AND CITY NOT LIKE '%U')
+;
+
+-- LEFT, RIGHT, NOT IN
+SELECT DISTINCT CITY
+FROM STATION
+WHERE LEFT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U') 
+    OR RIGHT(CITY, 1) NOT IN ('A', 'E', 'I', 'O', 'U')
+;
+
+-- Regular Expressions
+SELECT DISTINCT CITY
+FROM STATION 
+WHERE CITY NOT REGEXP '^a|^e|^i|^o|^u' 
+    OR CITY NOT REGEXP  'a$|e$|i$|o$|u$'
+;
+
+SELECT DISTINCT CITY
+FROM STATION 
+WHERE CITY REGEXP '^[^aeiou]'
+    OR CITY REGEXP '[^aeiou]$'
+;
